@@ -1,0 +1,63 @@
+{
+  "name": "Marketing AB Test - Coral",
+  "dataColors": [
+    "#FFFFFF",
+    "#222222"
+  ],
+  "background": "#FF385C",
+  "foreground": "#FFFFFF",
+  "tableAccent": "#FF385C",
+  "firstLevelElements": "#FFFFFF",
+  "secondLevelElements": "#FFE1E6",
+  "thirdLevelElements": "#FF9AAD",
+  "fourthLevelElements": "#FFE1E6",
+  "secondaryBackground": "#FFF5F6",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14,
+      "color": "#FFFFFF"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#FFFFFF"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#FFE1E6"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 32,
+      "color": "#FFFFFF"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}
