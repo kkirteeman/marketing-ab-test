@@ -23,6 +23,5 @@ dashboard/experiment_summary.csv
 dashboard/experiment_metrics.csv
 
 # Power BI local files
-dashboard/marketing_ab_test_dashboard.pbix
 **/.pbi/
 *.pbix.lock
