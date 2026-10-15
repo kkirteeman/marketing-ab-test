@@ -1,0 +1,28 @@
+# Local environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.env
+.env.*
+*.log
+*.tmp
+~$*
+.DS_Store
+Thumbs.db
+
+# Data generated locally
+data/raw/*
+data/cleaned/*
+data/*.db
+data/*.db-*
+dashboard/experiment_dashboard_data.csv
+dashboard/experiment_summary.csv
+dashboard/experiment_metrics.csv
+
+# Power BI local files
+dashboard/marketing_ab_test_dashboard.pbix
+**/.pbi/
+*.pbix.lock
