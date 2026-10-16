@@ -10,11 +10,18 @@ if not database.exists():
     raise FileNotFoundError("Run sql/create_database.py before exporting dashboard data.")
 with sqlite3.connect(database) as connection:
     data = pd.read_sql_query("SELECT * FROM experiment_data ORDER BY user_id", connection)
-if len(data) != 588101 or not data.user_id.is_unique or data.converted.sum() != 14843:
+if (
+    len(data) != 588101
+    or not data.user_id.is_unique
+    or data.converted.sum() != 14843
+    or set(data.test_group) != {"ad", "psa"}
+    or not data.converted.isin([0, 1]).all()
+):
     raise ValueError("Experiment totals do not match the expected dataset.")
 summary = data.groupby("test_group").agg(users=("converted", "size"), conversions=("converted", "sum")).reindex(["ad", "psa"])
 summary["non_conversions"] = summary.users - summary.conversions
 summary["conversion_rate"] = summary.conversions / summary.users
+summary["conversion_rate_percent"] = summary["conversion_rate"] * 100
 ad, control = summary.conversion_rate
 difference = ad - control
 _, p_value = proportions_ztest(summary.conversions, summary.users)

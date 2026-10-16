@@ -16,6 +16,9 @@ def converted_to_integer(value):
     raise ValueError(f"Unexpected converted value: {value}")
 
 
+if not CSV_PATH.is_file():
+    raise FileNotFoundError("Run notebooks/01_data_cleaning.ipynb before creating the database.")
+
 with CSV_PATH.open(newline="", encoding="utf-8") as csv_file:
     reader = csv.DictReader(csv_file)
     rows = [
@@ -31,6 +34,7 @@ with CSV_PATH.open(newline="", encoding="utf-8") as csv_file:
     ]
 
 with sqlite3.connect(DATABASE_PATH) as connection:
+    connection.execute("BEGIN")
     connection.execute("DROP TABLE IF EXISTS experiment_data")
     connection.execute(
         """
@@ -69,14 +73,14 @@ with sqlite3.connect(DATABASE_PATH) as connection:
         "SELECT SUM(converted) FROM experiment_data"
     ).fetchone()[0]
 
-if final_row_count != 588101:
-    raise ValueError(f"Expected 588101 rows, found {final_row_count}")
-if unique_user_count != final_row_count:
-    raise ValueError("User IDs are not unique")
-if group_values != {"ad", "psa"}:
-    raise ValueError(f"Unexpected experiment groups: {group_values}")
-if conversion_total != 14843:
-    raise ValueError(f"Expected 14843 conversions, found {conversion_total}")
+    if final_row_count != 588101:
+        raise ValueError(f"Expected 588101 rows, found {final_row_count}")
+    if unique_user_count != final_row_count:
+        raise ValueError("User IDs are not unique")
+    if group_values != {"ad", "psa"}:
+        raise ValueError(f"Unexpected experiment groups: {group_values}")
+    if conversion_total != 14843:
+        raise ValueError(f"Expected 14843 conversions, found {conversion_total}")
 
 print(f"Database created: {DATABASE_PATH}")
 print("Table created: experiment_data")
