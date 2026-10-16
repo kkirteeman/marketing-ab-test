@@ -2,6 +2,8 @@
 
 <img width="1992" height="1152" alt="Marketing A/B test dashboard showing conversion rates and experiment results" src="https://github.com/user-attachments/assets/ace1b860-2819-46c5-816a-f1e394aa3d45" />
 
+[▶ Watch the dashboard demo](https://youtu.be/U3RopPs7UBI)
+
 I built this project to see whether users shown an ad converted more often than a control group shown a public service announcement.
 
 I used Python and SQL for the analysis, a statistical test to compare the conversion rates, and Power BI to build the final dashboard.
